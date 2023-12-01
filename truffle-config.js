@@ -16,15 +16,12 @@ module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   networks: {
-    development: {
-      provider: () =>
-        new HDWalletProvider(
-          MNEMONIC,
-          `http://103.150.136.231:9545`
-        ),
+  development: {
+      host:'localhost',
+      port:9545,
       network_id: '*', // match any network
       skipDryRun: true,
-      //gas: 5500000
+      gas: 7000000
     },
     bor: {
       provider: () =>
@@ -48,9 +45,32 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           MNEMONIC,
-          `https://rpc-mumbai.matic.today`
+          `https://rpc.ankr.com/polygon_mumbai`
         ),
       network_id: '80001',
+      gas: 8000000,
+      gasPrice: 30000000000, // 30 gwei
+      skipDryRun: true,
+    },
+    evmos: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://evmos-evm.publicnode.com`
+        ),
+      network_id: '9001',
+      gasPrice: '90000000000'
+    },
+    evmos_testnet: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://jsonrpc-evmos-testnet.mzonder.com`
+        ),
+      network_id: '9000',
+      gas: 8000000,
+      gasPrice: 30000000000, // 30 gwei
+      skipDryRun: true,
     },
     goerli: {
       provider: function() {

@@ -1,6 +1,6 @@
 {
-  "name": "matic-protocol",
-  "version": "0.3.2",
+  "name": "ramestta-protocol",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "verify": {
@@ -15,6 +15,10 @@
     "truffle:compile": "truffle compile",
     "truffle:migrate": "scripts/run-migration.sh",
     "truffle:migrate:dev": "truffle migrate --network development",
+    "truffle:migrate:mumbai": "truffle migrate --network mumbai",
+    "truffle:migrate:matic": "truffle migrate --network matic",
+    "truffle:migrate:evmos:testnet": "truffle migrate --network evmos_testnet",
+    "truffle:migrate:evmos": "truffle migrate --network evmos",
     "truffle:migrate:dev:bor": "truffle migrate --network bor",
     "truffle:verify": "truffle run verify $npm_package_verify_contracts --network ropsten",
     "test": "truffle test",
