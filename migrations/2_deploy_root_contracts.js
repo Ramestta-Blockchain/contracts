@@ -47,7 +47,7 @@ const StakeManagerTestable = artifacts.require('StakeManagerTestable')
 const StakeManagerTest = artifacts.require('StakeManagerTest')
 
 const ExitNFT = artifacts.require('ExitNFT')
-const MaticWeth = artifacts.require('MaticWETH')
+const MaticWeth = artifacts.require('RamaWETH')
 const RamaToken = artifacts.require('RamaToken')
 const TestToken = artifacts.require('TestToken')
 const RootERC721 = artifacts.require('RootERC721')

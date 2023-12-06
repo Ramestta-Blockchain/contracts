@@ -36,10 +36,15 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           MNEMONIC,
-          `https://rpc-mainnet.matic.network`
+          `https://polygon-mainnet.g.alchemy.com/v2/rO_9C4ijxFHg2D0uOGbC1MoEvfBEKxAU`
         ),
       network_id: '137',
-      gasPrice: '90000000000'
+      gas: 8000000,
+      gasPrice: 90000000000, // 90 gwei
+      maxFeePerGas: 90000000000,
+      maxPriorityFeePerGas:10000000000, // 10 gwei
+      production: true,
+      skipDryRun: true,
     },
     mumbai: {
       provider: () =>
@@ -106,7 +111,7 @@ module.exports = {
           enabled: true,
           runs: 200
         },
-        evmVersion: 'constantinople'
+        evmVersion: 'berlin'
       }
     }
   },

@@ -41,7 +41,7 @@ const TransferWithSigPredicate = artifacts.require('TransferWithSigPredicate')
 const ExitNFT = artifacts.require('ExitNFT')
 
 // tokens
-const MaticWeth = artifacts.require('MaticWETH')
+const MaticWeth = artifacts.require('RamaWETH')
 const TestToken = artifacts.require('TestToken')
 const RootERC721 = artifacts.require('RootERC721')
 

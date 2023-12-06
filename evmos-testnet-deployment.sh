@@ -7,9 +7,11 @@ source .env
 export PRIVATE_KEY=$PRIVATE_KEY
 export MNEMONIC=$MNEMONIC
 
+# export bor id
+export BOR_ID="${BOR_ID:-1370}"
 # export heimdall id
-export HEIMDALL_ID="${HEIMDALL_ID:-heimdall-1377}"
+export HEIMDALL_ID="${HEIMDALL_ID:-heimdall-$BOR_ID}"
 
 # root contracts are deployed on base chain
-npm run truffle:migrate:evmos:testnet -- --reset --to 4
+bun run truffle:migrate:evmos:testnet -- --reset --to 4
 sleep 3

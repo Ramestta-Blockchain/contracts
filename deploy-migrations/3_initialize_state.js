@@ -11,7 +11,7 @@ const ERC20Predicate = artifacts.require('ERC20Predicate')
 const ERC721Predicate = artifacts.require('ERC721Predicate')
 const MarketplacePredicate = artifacts.require('MarketplacePredicate')
 const TransferWithSigPredicate = artifacts.require('TransferWithSigPredicate')
-const MaticWeth = artifacts.require('MaticWETH')
+const MaticWeth = artifacts.require('RamaWETH')
 const Governance = artifacts.require('Governance')
 const EventsHubProxy = artifacts.require('EventsHubProxy')
 

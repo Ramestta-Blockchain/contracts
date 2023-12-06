@@ -12,6 +12,5 @@ export BOR_ID="${BOR_ID:-1370}"
 # export heimdall id
 export HEIMDALL_ID="${HEIMDALL_ID:-heimdall-$BOR_ID}"
 
-# root contracts are deployed on base chain
-npm run truffle:migrate:matic -- --to 4
+bun run template:process --bor-chain-id $BOR_ID
 sleep 3

@@ -91,10 +91,10 @@ contract StakeManager is
         validatorShareFactory = ValidatorShareFactory(_validatorShareFactory);
         _transferOwnership(_owner);
 
-        WITHDRAWAL_DELAY = (2**13); // unit: epoch
+        WITHDRAWAL_DELAY = 48; // unit: epoch
         currentEpoch = 1;
         dynasty = 886; // unit: epoch 50 days
-        CHECKPOINT_REWARD = 1200 * (10**18); // update via governance
+        CHECKPOINT_REWARD = 120 * (10**18); // update via governance
         minDeposit = (10**18); // in ERC20 token
         minHeimdallFee = (10**18); // in ERC20 token
         checkPointBlockInterval = 1024;
@@ -102,7 +102,7 @@ contract StakeManager is
 
         validatorThreshold = 7; //128
         NFTCounter = 1;
-        auctionPeriod = (2**13) / 4; // 1 week in epochs
+        auctionPeriod = 48 / 4; // 1 week in epochs
         proposerBonus = 10; // 10 % of total rewards
         delegationEnabled = true;
     }
