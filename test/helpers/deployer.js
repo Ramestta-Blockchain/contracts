@@ -252,7 +252,7 @@ class Deployer {
     await Promise.all([
       this.mapToken(maticWeth.address, maticWeth.address, false /* isERC721 */),
       this.updateContractMap(
-        ethUtils.keccak256('wethToken'),
+        ethUtils.keccak256('wmaticToken'),
         maticWeth.address
       )
     ])

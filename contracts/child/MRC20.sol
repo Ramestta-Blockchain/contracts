@@ -66,7 +66,7 @@ contract MRC20 is BaseERC20 {
     }
 
     function name() public pure returns (string memory) {
-        return "Rama Token";
+        return "Ramestta";
     }
 
     function symbol() public pure returns (string memory) {

@@ -86,7 +86,7 @@ module.exports = async function(deployer) {
         await updateContractMap(
           governance,
           registry,
-          ethUtils.keccak256('wethToken'),
+          ethUtils.keccak256('wmaticToken'),
           MaticWeth.address
         )
         await updateContractMap(

@@ -29,10 +29,10 @@ async function stake() {
 
   const accounts = await web3.eth.getAccounts()
   const stakeManager = await getStakeManager()
-  const maticToken = await RootToken.at(contracts.root.tokens.MaticToken)
-  console.log({ stakeManager: stakeManager.address, maticToken: maticToken.address, stakeToken: await stakeManager.token() })
-  console.log('Sender accounts has a balanceOf', (await maticToken.balanceOf(accounts[0])).toString())
-  await maticToken.approve(stakeManager.address, web3.utils.toWei('1000000'))
+  const ramaToken = await RootToken.at(contracts.root.tokens.RamaToken)
+  console.log({ stakeManager: stakeManager.address, ramaToken: ramaToken.address, stakeToken: await stakeManager.token() })
+  console.log('Sender accounts has a balanceOf', (await ramaToken.balanceOf(accounts[0])).toString())
+  await ramaToken.approve(stakeManager.address, web3.utils.toWei('1000000'))
   console.log('sent approve tx, staking now...')
   // Remember to change the 4th parameter to false if delegation is not required
   await stakeManager.stakeFor(validatorAccount, stakeAmount, heimdallFee, true, pubkey)

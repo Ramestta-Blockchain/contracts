@@ -41,7 +41,8 @@ const TransferWithSigPredicate = artifacts.require('TransferWithSigPredicate')
 const ExitNFT = artifacts.require('ExitNFT')
 
 // tokens
-const MaticWeth = artifacts.require('RamaWETH')
+const RamaWmatic = artifacts.require('RamaWMATIC')
+const RamaToken = artifacts.require('RamaToken')
 const TestToken = artifacts.require('TestToken')
 const RootERC721 = artifacts.require('RootERC721')
 
@@ -147,17 +148,17 @@ module.exports = async function(deployer) {
 
     await deployer.deploy(ValidatorShareFactory)
     await deployer.deploy(StakingInfo, Registry.address)
-    await deployer.deploy(StakingNFT, 'Rama Validator', 'RV')
+    await deployer.deploy(StakingNFT, 'RAMA Validator', 'RV')
 
     console.log('deploying tokens...')
-    await deployer.deploy(MaticWeth)
-    await deployer.deploy(TestToken, 'RAMA', 'RAMA')
+    await deployer.deploy(RamaWmatic)
+    const ramaToken = await deployer.deploy(RamaToken, 'Ramestta', 'RAMA',18)
     const testToken = await TestToken.new('Test ERC20', 'TST20')
     await deployer.deploy(RootERC721, 'Test ERC721', 'TST721')
 
     const stakeManager = await deployer.deploy(StakeManager)
     const proxy = await deployer.deploy(StakeManagerProxy, '0x0000000000000000000000000000000000000000')
-    await proxy.updateAndCall(StakeManager.address, stakeManager.contract.methods.initialize(Registry.address, RootChainProxy.address, TestToken.address, StakingNFT.address, StakingInfo.address, ValidatorShareFactory.address, GovernanceProxy.address).encodeABI())
+    await proxy.updateAndCall(StakeManager.address, stakeManager.contract.methods.initialize(Registry.address, RootChainProxy.address, ramaToken.address, StakingNFT.address, StakingInfo.address, ValidatorShareFactory.address, GovernanceProxy.address).encodeABI())
 
     await deployer.deploy(SlashingManager, Registry.address, StakingInfo.address, process.env.HEIMDALL_ID)
     await deployer.deploy(ValidatorShare, Registry.address, 0/** dummy id */, StakingInfo.address, StakeManagerProxy.address)
@@ -233,8 +234,8 @@ module.exports = async function(deployer) {
           TransferWithSigPredicate: TransferWithSigPredicate.address
         },
         tokens: {
-          MaticWeth: MaticWeth.address,
-          MaticToken: TestToken.address,
+          RamaWmatic: RamaWmatic.address,
+          RamaToken: ramaToken.address,
           TestToken: testToken.address,
           RootERC721: RootERC721.address
         }

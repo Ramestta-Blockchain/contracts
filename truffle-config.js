@@ -40,11 +40,14 @@ module.exports = {
         ),
       network_id: '137',
       gas: 8000000,
-      gasPrice: 90000000000, // 90 gwei
-      maxFeePerGas: 90000000000,
-      maxPriorityFeePerGas:10000000000, // 10 gwei
+      gasPrice: 12000000000, // 100 gwei
+      maxFeePerGas: 12000000000, // 100 gwei
+      maxPriorityFeePerGas:12000000000, // 100 gwei
       production: true,
       skipDryRun: true,
+      networkCheckTimeout: 1000000,
+      // websocket: true,
+      timeoutBlocks: 90000
     },
     mumbai: {
       provider: () =>
@@ -111,7 +114,7 @@ module.exports = {
           enabled: true,
           runs: 200
         },
-        evmVersion: 'berlin'
+        evmVersion: 'istanbul'
       }
     }
   },
@@ -127,7 +130,7 @@ module.exports = {
   },
   plugins: ['solidity-coverage', 'truffle-plugin-verify', 'truffle-contract-size'],
   verify: {
-    preamble: 'Matic network contracts'
+    preamble: 'Ramestta Network contracts'
   },
   api_keys: {
     etherscan: ETHERSCAN_API_KEY

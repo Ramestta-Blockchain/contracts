@@ -84,13 +84,13 @@ module.exports = async function (callback) {
     //   tokenID: process.argv[7], // nft id
     // })
 
-    // -- network <matic network> <child token>
+    // -- network <ramestta network> <child token>
     // await checkDepositedERC20Balance({
     //   addr: accounts[0], 
     //   token: process.argv[6], // child token
     // })
 
-    // -- network <matic network> <child token> <nft id>
+    // -- network <ramestta network> <child token> <nft id>
     // await checkDepositedERC721Balance({
     //   addr: accounts[0], 
     //   token: process.argv[6], // child token

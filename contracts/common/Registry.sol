@@ -6,7 +6,7 @@ import {IWithdrawManager} from "../root/withdrawManager/IWithdrawManager.sol";
 
 contract Registry is Governable {
     // @todo hardcode constants
-    bytes32 private constant WETH_TOKEN = keccak256("wethToken");
+    bytes32 private constant WMATIC_TOKEN = keccak256("wmaticToken");
     bytes32 private constant DEPOSIT_MANAGER = keccak256("depositManager");
     bytes32 private constant STAKE_MANAGER = keccak256("stakeManager");
     bytes32 private constant VALIDATOR_SHARE = keccak256("validatorShare");
@@ -90,8 +90,8 @@ contract Registry is Governable {
         return contractMap[VALIDATOR_SHARE];
     }
 
-    function getWethTokenAddress() public view returns (address) {
-        return contractMap[WETH_TOKEN];
+    function getWmaticTokenAddress() public view returns (address) {
+        return contractMap[WMATIC_TOKEN];
     }
 
     function getDepositManagerAddress() public view returns (address) {

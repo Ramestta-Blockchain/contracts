@@ -7,7 +7,7 @@ import {SafeMath} from "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import {SafeERC20} from "openzeppelin-solidity/contracts/token/ERC20/SafeERC20.sol";
 
 import {Registry} from "../../common/Registry.sol";
-import {WETH} from "../../common/tokens/WETH.sol";
+import {WMATIC} from "../../common/tokens/WMATIC.sol";
 import {IDepositManager} from "./IDepositManager.sol";
 import {DepositManagerStorage} from "./DepositManagerStorage.sol";
 import {StateSender} from "../stateSyncer/StateSender.sol";
@@ -47,11 +47,11 @@ contract DepositManager is DepositManagerStorage, IDepositManager, ERC721Holder 
         address _user,
         uint256 _amountOrNFTId
     ) external isPredicateAuthorized {
-        address wethToken = registry.getWethTokenAddress();
+        address wmaticToken = registry.getWmaticTokenAddress();
         if (registry.isERC721(_token)) {
             IERC721(_token).transferFrom(address(this), _user, _amountOrNFTId);
-        } else if (_token == wethToken) {
-            WETH t = WETH(_token);
+        } else if (_token == wmaticToken) {
+            WMATIC t = WMATIC(_token);
             t.withdraw(_amountOrNFTId, _user);
         } else {
             require(IERC20(_token).transfer(_user, _amountOrNFTId), "TRANSFER_FAILED");
@@ -127,10 +127,10 @@ contract DepositManager is DepositManagerStorage, IDepositManager, ERC721Holder 
 
     // @todo: write depositEtherForUser
     function depositEther() public payable {
-        address wethToken = registry.getWethTokenAddress();
-        WETH t = WETH(wethToken);
+        address wmaticToken = registry.getWmaticTokenAddress();
+        WMATIC t = WMATIC(wmaticToken);
         t.deposit.value(msg.value)();
-        _safeCreateDepositBlock(msg.sender, wethToken, msg.value);
+        _safeCreateDepositBlock(msg.sender, wmaticToken, msg.value);
     }
 
     function _safeCreateDepositBlock(

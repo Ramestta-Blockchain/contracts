@@ -12,7 +12,7 @@ const ERC20Predicate = artifacts.require('ERC20Predicate')
 const ERC721Predicate = artifacts.require('ERC721Predicate')
 const MarketplacePredicate = artifacts.require('MarketplacePredicate')
 const TransferWithSigPredicate = artifacts.require('TransferWithSigPredicate')
-const MaticWeth = artifacts.require('RamaWETH')
+const RamaWmatic = artifacts.require('RamaWMATIC')
 const Governance = artifacts.require('Governance')
 const EventsHubProxy = artifacts.require('EventsHubProxy')
 
@@ -96,8 +96,8 @@ module.exports = async function(deployer) {
         await updateContractMap(
           governance,
           registry,
-          ethUtils.keccak256('wethToken'),
-          MaticWeth.address
+          ethUtils.keccak256('wmaticToken'),
+          RamaWmatic.address
         )
         await updateContractMap(
           governance,

@@ -4,7 +4,7 @@ import { DepositManagerStorage } from "../../root/depositManager/DepositManagerS
 import { GovernanceLockable } from "../mixin/GovernanceLockable.sol";
 import { IERC20 } from "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import { IERC721 } from "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol";
-import { WETH } from "../tokens/WETH.sol";
+import { WMATIC } from "../tokens/WMATIC.sol";
 
 
 contract Drainable is DepositManagerStorage {
@@ -39,8 +39,8 @@ contract Drainable is DepositManagerStorage {
     uint256 amount,
     address payable destination
   ) external onlyGovernance {
-    address wethToken = registry.getWethTokenAddress();
-    WETH t = WETH(wethToken);
+    address wmaticToken = registry.getWmaticTokenAddress();
+    WMATIC t = WMATIC(wmaticToken);
     t.withdraw(amount, destination);
   }
 }

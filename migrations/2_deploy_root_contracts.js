@@ -47,7 +47,7 @@ const StakeManagerTestable = artifacts.require('StakeManagerTestable')
 const StakeManagerTest = artifacts.require('StakeManagerTest')
 
 const ExitNFT = artifacts.require('ExitNFT')
-const MaticWeth = artifacts.require('RamaWETH')
+const RamaWmatic = artifacts.require('RamaWMATIC')
 const RamaToken = artifacts.require('RamaToken')
 const TestToken = artifacts.require('TestToken')
 const RootERC721 = artifacts.require('RootERC721')
@@ -177,7 +177,7 @@ module.exports = async function(deployer, network, accounts) {
     await deployer.deploy(Registry, GovernanceProxy.address)
     await deployer.deploy(ValidatorShareFactory)
     await deployer.deploy(ValidatorShare)
-    const ramaToken = await deployer.deploy(RamaToken, 'RAMA', 'RAMA',18)
+    const ramaToken = await deployer.deploy(RamaToken, 'Ramestta', 'RAMA',18)
     await deployer.deploy(TestToken, 'Test ERC20', 'TEST20')
     await deployer.deploy(RootERC721, 'Test ERC721', 'TST721')
     await deployer.deploy(StakingInfo, Registry.address)
@@ -238,7 +238,7 @@ module.exports = async function(deployer, network, accounts) {
     let stakingNFT = await StakingNFT.deployed()
     await stakingNFT.transferOwnership(StakeManagerProxy.address)
 
-    await deployer.deploy(MaticWeth)
+    await deployer.deploy(RamaWmatic)
 
     await Promise.all([
       deployer.deploy(
@@ -296,8 +296,8 @@ module.exports = async function(deployer, network, accounts) {
           TransferWithSigPredicate: TransferWithSigPredicate.address
         },
         tokens: {
-          MaticToken: ramaToken.address,
-          MaticWeth: MaticWeth.address,
+          RamaToken: ramaToken.address,
+          RamaWmatic: RamaWmatic.address,
           TestToken: TestToken.address,
           RootERC721: RootERC721.address
         }
